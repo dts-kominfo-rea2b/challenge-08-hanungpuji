@@ -50,26 +50,23 @@
     <!-- ! Untuk tantangan ini, script jangan diubah ke external js yah ! -->
     <script>
       // TODO: Deklarasi variable sesuai dengan kebutuhan di sini
-      let button;
-      let input;
-      let output;
-      const list = document.querySelector('#todo-output');
+      let button = document.getElementById("todo-submit");  
+      let input = document.getElementById("todo-input");;
+      let output = document.querySelector('#todo-output');
 
       // TODO: Buatlah sebuah fungsi dengan nama fnClickHandler
       // Fungsi yang digunakan untuk menambahkan tulisan
       // Jangan ubah cara deklarasi fungsinya, cukup isi saja
       function fnClickHandler(toDoItem) {
-          output = document.createElement('li');
-          output.textContent = toDoItem;
-          output.className = 'todo-item';
-          list.appendChild(output);
+          let list = document.createElement('li');
+          list.textContent = toDoItem;
+          list.className = 'todo-item';
+          output.appendChild(list);
 
       }
 
       // TODO: register event onclick / addEventListener untuk button
       // akan menjalankan fungsi fnClickHandler
-      input = document.getElementById("todo-input");
-      button = document.getElementById("todo-submit");  
       button.addEventListener("click", (event) => {
         fnClickHandler(input.value);
         input.value = '';
@@ -79,7 +76,7 @@
       // TODO: register event onkeypress / addEventListener untuk input
       // sehingga saat di input ditekan enter akan menjalankan fungsi fnClickHandler juga
       input.addEventListener("keypress", (event) => {
-        if(event.keyCode === 13 || event.key === 'enter'){
+        if(event.keyCode === 13 || event.key === 'Enter' || event.charCode === 13){
           fnClickHandler(input.value);
           input.value = '';
         }
